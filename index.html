@@ -3,21 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/style.scss">
 </head>
 <body>
-  <input type="text" id="num1">
-    <div id="operatorBtns">
-      <button id="plus" onclick="operation='+'">+</button>
-      <button id="minus" onclick="operation='-'">-</button>
-      <button id="times" onclick="operation='*'">x</button>
-      <button id="divide" onclick="operation='/'">:</button>
-      <button onclick="func()">=</button>
-    </div>
-
-
-
-
+  <!-- container -->
+  <table class="calculator">
+    <!-- title -->
+    <tr>
+      <td colspan="4"><div class="top"></div></td>
+    </tr>
+    <!-- calculator display -->
+    <tr>
+      <td colspan="4">
+        <input type="text" id="display" placeholder="0" readonly />
+      </td>
+    </tr>
+    <!-- It's just a decoration, it doesn't affect anything -->
+    <tr>
+      <td><button>MC</button></td>
+      <td><button>MR</button></td>
+      <td><button>M+</button></td>
+      <td><button>M-</button></td>
+    </tr>
+    <!-- first row -->
+      <tr>
+        <td><input type="button" value="C" onclick="clearDisplay()" class="top-side" /></td>
+        <td><input type="button" value="&#43;" onclick="appendOperator('+')" class="top-side" /></td>
+        <td><input type="button" value="&#8722;" onclick="appendOperator('-')" class="top-side" /></td>
+        <td><input type="button" value="␡" onclick="deleteLeft()" class="right-side" /></td>
+      </tr>
+      <!-- second row -->
+      <tr>
+        <td><input type="button" value="1" onclick="appendNumber(1)" /></td>
+        <td><input type="button" value="2" onclick="appendNumber(2)" /></td>
+        <td><input type="button" value="3" onclick="appendNumber(3)" /></td>
+        <td><input type="button" value="&#215;" onclick="appendOperator('*')" class="right-side" /></td>
+      </tr>
+      <!-- third row -->
+      <tr>
+        <td><input type="button" value="4" onclick="appendNumber(4)" /></td>
+        <td><input type="button" value="5" onclick="appendNumber(5)" /></td>
+        <td><input type="button" value="6" onclick="appendNumber(6)" /></td>
+        <td><input type="button" value="&#247;" onclick="appendOperator('/')" class="right-side" /></td>
+      </tr>
+      <!-- fourth row -->
+      <tr>
+        <td><input type="button" value="7" onclick="appendNumber(7)" /></td>
+        <td><input type="button" value="8" onclick="appendNumber(8)" /></td>
+        <td><input type="button" value="9" onclick="appendNumber(9)" /></td>
+        <td><input type="button" value="&#37;" onclick="calculatePercentage()" class="right-side" /></td>
+      </tr>
+      <!-- last row -->
+      <tr>
+        <td><input type="button" value="," onclick="appendDecimal()" /></td>
+        <td><input type="button" value="0" onclick="appendNumber(0)" /></td>
+        <!-- calculate button -->
+        <td colspan="2"><input type="button" value="&#61;" onclick="calculate()" id="eval" /></td>
+      </tr>
+  </table>
 </body>
 <script src="app.js"></script>
 </html>
